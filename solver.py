@@ -153,7 +153,7 @@ class Solver(object):
             out_r = self.D(x_real, label_org, label_trg)
             x_fake = self.G(x_real, label_org, label_trg)
             out_f = self.D(x_fake.detach(), label_org, label_trg)
-            d_loss_adv = F.binary_cross_entropy_with_logits(input=out_f, target=torch.ones_like(out_f, dtype=torch.float)) + \
+            d_loss_adv = F.binary_cross_entropy_with_logits(input=out_f, target=torch.zeros_like(out_f, dtype=torch.float)) + \
                 F.binary_cross_entropy_with_logits(input=out_r, target=torch.ones_like(out_r, dtype=torch.float))
            
             # Loss: gp.
